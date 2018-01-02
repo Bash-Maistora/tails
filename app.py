@@ -8,7 +8,7 @@ app = Flask(__name__)
 API_KEY = 'AIzaSyCV631obrLDLfNHcDJmohRae8aMntavOd4'
 
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
     stores = json.load(open('stores.json'))
 

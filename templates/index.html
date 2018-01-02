@@ -5,12 +5,18 @@
 	<title>Store Locator</title>
 </head>
 <body>
+	<h2>Find nearest store</h2>
+	<form name=""></form>
+
+	<br>
 	{% for store in stores %}
 		<div>
 			<h3>{{store['name']}}</h3>
-			<p></p>
+			<a href="https://www.google.com/maps/place/{{store['latitude']}}+{{store['longitude']}}/@{{store['latitude']}},{{store['longitude']}}z">
+			
+				<img src="https://maps.googleapis.com/maps/api/staticmap?markers={{store['latitude']}},{{store['longitude']}}&amp;zoom=14&amp;size=400x400&amp;key={{ API_KEY }}">
+			</a>
 		</div>
-		<a href="https://www.google.com/maps/place/{{store['latitude']}}+{{store['longitude']}}/@{{store['latitude']}},{{store['longitude']}}z"><img src="https://maps.googleapis.com/maps/api/staticmap?markers={{store['latitude']}},{{store['longitude']}}&amp;zoom=14&amp;size=400x400&amp;key={{ API_KEY }}"></a>
 	{% endfor %}	
 </body>
 </html>
