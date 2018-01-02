@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Store Locator</title>
+</head>
+<body>
+	{% for store in stores %}
+		<div>
+			<h3>{{store['name']}}</h3>
+		</div>
+	{% endfor %}	
+</body>
+</html>

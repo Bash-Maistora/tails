@@ -7,6 +7,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    data = json.load(open('stores.json'))
-    result = data[0]['name']
-    return result
+    stores = json.load(open('stores.json'))
+    ordered = sorted(stores, key=lambda k: k['name'])
+    return render_template('index.html', stores=ordered)
