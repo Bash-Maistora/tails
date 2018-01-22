@@ -11,13 +11,19 @@ API_KEY = 'AIzaSyCV631obrLDLfNHcDJmohRae8aMntavOd4'
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    '''Returns list of stores from json on GET
-       Returns nearby stores for postcode on POST '''
+    ''' Sanitizes name and postcode data
+        Returns list of stores from json on GET
+        Returns nearby stores for postcode on POST '''
     stores = json.load(open('stores.json'))
-    postcodes = [store['postcode'] for store in stores]
 
     for store in stores:
         store['name'] = store['name'].replace('_', ' ')
+        if store['name'] == 'Rayleigh':
+            store['postcode'] = store['postcode'][:3] + ' ' + store['postcode'][3:]
+        if store['name'] == 'Bagshot':
+            store['postcode'] = 'GU19 5DF'
+
+    postcodes = [store['postcode'] for store in stores]
 
     r = requests.post('http://api.postcodes.io/postcodes', data={'postcodes': postcodes})
     results = r.json()
