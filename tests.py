@@ -80,7 +80,7 @@ class FlaskTest(TestCase):
         self.assertEqual(field.get_attribute('name'), 'postcode')
         field.send_keys('w12 0pr')
         field.send_keys(Keys.ENTER)
-        time.sleep(1)
+        time.sleep(2)
         empty = self.browser.find_element_by_id('no-result').text
         self.assertEqual(empty, 'No stores nearby.')
 

@@ -7,11 +7,11 @@
 </head>
 <body>
  <div class="container">
-	<div>
-		<h2 style="text-align: center;">Find Nearest Store</h2>
-		<form method="POST">
+ 	<h2 style="text-align: center;">Find Nearest Store</h2>
+	<div style="margin: 20px; max-width: 420px; margin-left:auto; margin-right:auto;">
+		<form method="POST" class="form-inline">
 		 <div class="form-group">
-			<label>Enter your postcode:</label>
+		 	<label>Enter your postcode:</label>
 			{% if error %}
 				<p id="error">{{ error }}</p>
 			{% endif %}
@@ -22,15 +22,17 @@
 	</div>
 	<div>
 	{% for store in stores %}
-		<div>
-			<h3 class="store">{{ store['name'] }}</h3>
+		<div class='thumbnail' style="max-width:420px; margin-left:auto; margin-right:auto;">
 			<a href="https://www.google.com/maps/place/{{store['latitude']}}+{{store['longitude']}}/@{{store['latitude']}},{{store['longitude']}}z">
 				<img class="map" src="https://maps.googleapis.com/maps/api/staticmap?markers={{store['latitude']}},{{store['longitude']}}&amp;zoom=14&amp;size=400x400&amp;key={{ API_KEY }}">
 			</a>
+			<div class="caption">
+			 <h3 class="store" style="text-align: center;">{{ store['name'] }}</h3>
+			</div>
 		</div>
 	{% else %}
 		<div>
-			<p id='no-result'>No stores nearby.</p>
+			<p id='no-result' style="text-align: center;">No stores nearby.</p>
 		</div>
 	{% endfor %}
 	</div>
@@ -38,3 +40,4 @@
  </div>
 </body>
 </html>
+				
